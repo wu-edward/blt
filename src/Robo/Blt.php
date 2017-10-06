@@ -127,8 +127,8 @@ class Blt implements ContainerAwareInterface, LoggerAwareInterface {
   protected function addSymfonyCommands(Application $application) {
     $twig = new Environment(new FilesystemLoader());
 
-    $repo_root = $this->getConfig()->get('repo.root');
-    $extension_file_contents = file_get_contents($repo_root . '/docroot/core/lib/Drupal/Core/Template/TwigExtension.php');
+    $docroot = $this->getConfig()->get('docroot');
+    $extension_file_contents = file_get_contents($docroot . '/core/lib/Drupal/Core/Template/TwigExtension.php');
 
     // Get any custom defined Twig filters to be ignored by linter.
     $twig_filters = (array) $this->getConfig()->get('validate.twig.filters');
